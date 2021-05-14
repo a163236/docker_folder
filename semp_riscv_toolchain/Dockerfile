@@ -11,8 +11,9 @@ ENV TZ=Asia/Tokyo
 RUN apt-get install -y git autoconf automake autotools-dev curl python3 libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev
 
 # riscv-gnu-toolchainのrvv-intrinsicブランチ
-RUN git clone --recursive https://github.com/a163236/riscv-gnu-toolchain.git && \
+RUN git clone https://github.com/a163236/riscv-gnu-toolchain.git && \
   cd riscv-gnu-toolchain && \
+  git submodule update --init --recursive && \
   ./configure --prefix=/opt/riscv32 --with-arch=rv32i --with-abi=ilp32 && \
   make newlib -j$(nproc)
 
