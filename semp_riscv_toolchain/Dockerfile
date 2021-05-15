@@ -23,7 +23,7 @@ FROM ubuntu:latest
 
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y tzdata
-RUN apt-get install -y nano bsdmainutils git build-essential vim-common
+RUN apt-get install -y nano bsdmainutils git build-essential
 
 # timezone setting
 ENV TZ=Asia/Tokyo
